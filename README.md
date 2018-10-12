@@ -13,6 +13,9 @@ Returns: title of movie, year released, IMDB ratings, plot, actors, country film
 
 Example: `node liri.js movie-this "Sherlock Holmes"`
 
+<img width="877" alt="sherlock" src="https://user-images.githubusercontent.com/40549632/46898068-4b3e2380-ce4c-11e8-94fd-4dcbb9975b4a.PNG">
+
+
 ### Get Concert Info
 Returns: concert venue, city and date of a band or Artist.
 
