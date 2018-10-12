@@ -10,15 +10,15 @@ A run down of the commands to use in the Terminal to get a response from LIRI
 
 ### Get Movie Info
 Returns: title of movie, year released, IMDB ratings, plot, actors, country filmed in and language of movie.
-`node liri.js movie-this "Sherlock Holmes"`
+Example: `node liri.js movie-this "Sherlock Holmes"`
 
 ### Get Concert Info
 Returns: concert venue, city and date of a band or Artist.
-`node liri.js concert-this "Bruno Mars"`
+Example: `node liri.js concert-this "Bruno Mars"`
 
 ### Get Spotify Song Info
 Returns: artist(s), song, album, and a link to preview the song. 
-`node liri.js spotify-this-song "Hey Jude"`
+Example: `node liri.js spotify-this-song "Hey Jude"`
 
 ## Technologies Used
 * Node.js
