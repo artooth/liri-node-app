@@ -1,9 +1,12 @@
 //Required npm modules and files//
 require("dotenv").config();
 let request = require("request");
-let spotify = require("node-spotify-api");
-let keys = require('./keys')
+let Spotify = require("node-spotify-api");
+let keys = require('./keys.js')
 let moment = require("moment");
+let fs = require("fs");
+const chalk = require('chalk');
+
 
 const userInput = process.argv[2];
 /*
@@ -20,80 +23,104 @@ function movieThis() {
     let thisMovie = process.argv[3]
     const queryUrl = "http://www.omdbapi.com/?t=" + thisMovie + "&y=&plot=short&apikey=trilogy";
     request(queryUrl, (err, response, body) => {
-        if (err)
+        if (err) {
             return err;
+        }
+        // if (!process.argv[3]) {
+        //     console.log(chalk.bold.blue("Movie not specified. You may like:") + " Mr. Nobody");
+
+        // }
 
         if (response.statusCode === 200) {
             let json = JSON.parse(body);
 
+            console.log('\n____________________________\n');
+            console.log(chalk.bold.blue("Title: ") + json.Title);
+            console.log(chalk.bold.blue("Year Released: ") + json.Released);
+            console.log(chalk.bold.blue("IMDB Ratings: ") + json.imdbRating);
+            console.log(chalk.bold.blue("Plot: ") + json.Plot);
+            console.log(chalk.bold.blue("Actors: ") + json.Actors);
+            console.log(chalk.bold.blue("Country: ") + json.Country);
+            console.log(chalk.bold.blue("Language: ") + json.Language);
             console.log("\n____________________________\n");
-            console.log("Title: " + json.Title);
-            console.log("Year Released: " + json.Released);
-            console.log("IMDB Ratings: " + json.imdbRating);
-            console.log("Plot: " + json.Plot);
-            console.log("Actors: " + json.Actors);
-            console.log("Country: " + json.Country);
-            console.log("Language: " + json.Language);
-            console.log("\n____________________________\n");
-
-        } else {
-            thisMovie = "Nobody's Fool"
-            movieThis()
         }
     })
+}
 
-};
 
 function concertThis() {
     let artist = process.argv[3]
     const queryUrl = "https://rest.bandsintown.com/artists/" + artist + "/events?app_id=codingbootcamp";
     request(queryUrl, (err, response, body) => {
-        if (err)
+        if (err) {
             return err;
-
+        }
         if (response.statusCode === 200) {
             let json = JSON.parse(body);
-            for (var i = 0; i < 3; i++) {
+            for (var i = 0; i < 5; i++) {
 
                 console.log("\n____________________________\n");
-                console.log("Venue: " + json[i].venue.name);
-                console.log("Location: " + json[i].venue.city);
-                console.log(moment(json[i].datetime).format("MM/DD/YY"));
+                console.log(chalk.bold.cyan("Venue: ") + json[i].venue.name);
+                console.log(chalk.bold.cyan("Location: ") + json[i].venue.city);
+                console.log(chalk.bold.cyan(moment(json[i].datetime).format("MM/DD/YY")));
                 console.log("\n____________________________\n");
 
             }
         }
     })
-
 }
 
 
 function spotifyThis() {
-    let spotify = new spotify({
-        id: keys.
-    })
+    let spotify = new Spotify(
+        keys.spotify
+    );
+    let songName = process.argv[3];
 
-    request(queryUrl, (err, response, body) => {
-        if (err)
+    spotify.search({
+        type: "track",
+        query: songName,
+    }, function (err, data) {
+        if (err) {
             return err;
+        }
+        if (!process.argv[3]) {
 
-        if (response.statusCode === 200) {
-            let json = JSON.parse(body);
+        }
+        else {
 
             console.log("\n____________________________\n");
-            console.log("Artist(s): " + json.Artists);
-            console.log("Song: " + json.Song);
-            console.log("Album: " + json.Album);
-            console.log("Preview Link: " + json.link);
+            console.log(chalk.bold.magenta("Artist: ") + data.tracks.items[0].artists[0].name);
+            console.log(chalk.bold.magenta("Song: ") + data.tracks.items[0].name);
+            console.log(chalk.bold.magenta("Album: ") + data.tracks.items[0].album.name);
+            console.log(chalk.bold.magenta("Preview (30 sec): ") + data.tracks.items[0].preview_url);
             console.log("\n____________________________\n");
+        }
+    })
+}
 
+
+
+function doThis() {
+    // fs.appendFile("random.txt", process.argv[2] + "\n", (err) => {
+    fs.readFile("random.txt", (err, data) => {
+        if (err) {
+            return console.log(error);
         } else {
-            thisMovie = "Nobody's Fool"
-            movieThis()
+            console.log(data.toString())
         }
     })
 
-};
+    // })
+
+    // if (userInput == "do-what-it-says")
+
+    //     fs.readFile('random.txt', 'utf8', function (err, data) {
+    //         if (err)
+    //             return err;
+
+    //     })
+}
 
 
 // Logic
@@ -111,7 +138,13 @@ switch (userInput) {
 
     case 'spotify-this-song':
         spotifyThis();
-        console.log("Spotify working")
+
+
+        break;
+
+    case 'do-what-it-says':
+        doThis();
+        console.log("do what is says working")
 
         break;
 
