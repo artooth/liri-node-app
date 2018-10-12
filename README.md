@@ -28,12 +28,14 @@ Returns: artist(s), song, album, and a link to preview the song.
 
 Example: `node liri.js spotify-this-song "Single Ladies"`
 
+<img width="658" alt="single ladies" src="https://user-images.githubusercontent.com/40549632/46898105-9a845400-ce4c-11e8-8f12-a8f284a503e5.PNG">
+
 ## Built With
 * Node.js
 * Javascript
 * OMBd API (via request npm module)
 * Spotify API (via Spotify npm module)
-* Bands in Town API (via request npmm module)
+* Bands in Town API (via request npm module)
 
 ## Author
 
