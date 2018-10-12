@@ -9,7 +9,6 @@ const chalk = require('chalk');
 
 
 const userInput = process.argv[2];
-let doIt = process.argv[3]
 
 
 // Functions 
