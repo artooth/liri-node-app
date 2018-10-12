@@ -21,6 +21,8 @@ Returns: concert venue, city and date of a band or Artist.
 
 Example: `node liri.js concert-this "Bruno Mars"`
 
+<img width="502" alt="bruno mars" src="https://user-images.githubusercontent.com/40549632/46898090-7d4f8580-ce4c-11e8-9050-09e9209af686.PNG">
+
 ### Get Spotify Song Info
 Returns: artist(s), song, album, and a link to preview the song. 
 
