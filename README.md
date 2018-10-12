@@ -23,13 +23,15 @@ Returns: artist(s), song, album, and a link to preview the song.
 
 Example: `node liri.js spotify-this-song "Hey Jude"`
 
-## Technologies Used
+## Built With
 * Node.js
 * Javascript
 * OMBd API (via request npm module)
 * Spotify API (via Spotify npm module)
 * Bands in Town API (via request npmm module)
 
+## Author
 
+Alexandria Toothman
  
 
