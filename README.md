@@ -21,7 +21,7 @@ Example: `node liri.js concert-this "Bruno Mars"`
 ### Get Spotify Song Info
 Returns: artist(s), song, album, and a link to preview the song. 
 
-Example: `node liri.js spotify-this-song "Hey Jude"`
+Example: `node liri.js spotify-this-song "Single Ladies"`
 
 ## Built With
 * Node.js
