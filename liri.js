@@ -96,9 +96,6 @@ function doThis() {
             return console.log(error);
         } else {
 
-
-
-
         }
 
     })
@@ -111,7 +108,7 @@ function doThis() {
 
 
 // Logic
-function switchIT() {
+
     switch (userInput) {
         case 'movie-this':
             movieThis();
@@ -140,7 +137,7 @@ function switchIT() {
 
             break;
     }
-}
+
 
 
 
